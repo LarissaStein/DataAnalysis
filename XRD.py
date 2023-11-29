@@ -7,11 +7,10 @@ def read(path):
         for line in sample_data:
             data=line.split()
             try:
-                if data[0].isnumeric():
-                    data[0]=float(data[0])
-                    data[1]=float(data[1])
-                    list_lines.append(data)
-            except IndexError:
+                data[0]=float(data[0])
+                data[1]=float(data[1])
+                list_lines.append(data)
+            except (IndexError, ValueError):
                 continue
     dataframe = pd.DataFrame(list_lines,columns=['2Theta','Intensity'])
     return dataframe
