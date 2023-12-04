@@ -15,9 +15,12 @@ def read(path):
     dataframe = pd.DataFrame(list_lines,columns=['2Theta','Intensity'])
     return dataframe
 
+def plot_graph(dataframe,title_graph=None):
+    dataframe.plot(x='2Theta',xlabel='2$\Theta$ (degrees)',ylabel='Intensity (a.u.)',title=title_graph,yticks=[],legend=False)
+    plt.show()
+
 PATH='/home/larissa/Downloads/Análises/ZnFe2O4_1.txt'
 
 df= read(PATH)
 print(df)
-df.plot(x='2Theta',y='Intensity')
-plt.show()
+plot_graph(df,'XRD Zinc Ferrite ($ZnFe_{2}O_{4}$)')
